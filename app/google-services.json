@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "678415059563",
+    "firebase_url": "https://canorus-18990-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "canorus-18990",
+    "storage_bucket": "canorus-18990.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678415059563:android:d434b71779ef97d0baff2e",
+        "android_client_info": {
+          "package_name": "com.example.canoruslearningmanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678415059563-426t32ku0m0gbo85pqkare87nkj2f4rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsUTZaZFCBUEH5Wl0Xc0YLmJyuhrIPZgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678415059563-426t32ku0m0gbo85pqkare87nkj2f4rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

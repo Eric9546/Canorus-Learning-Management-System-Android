@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/view_enrolment"
+        android:title="Edit/Remove Enrolment" />
+
+    <item android:id="@+id/add_program_session"
+        android:title="Add Program/Session" />
+
+    <item android:id="@+id/remove_program_session"
+        android:title="Remove Program/Session" />
+
+</menu>

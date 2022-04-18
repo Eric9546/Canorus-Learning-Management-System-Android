@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.canoruslearningmanagementsystem.AdminPanel" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/adminPanelText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="16dp"
+                android:text="Payment"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentImg2" />
+
+            <TextView
+                android:id="@+id/adminPanelText7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="16dp"
+                android:text="Log"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logImg" />
+
+            <TextView
+                android:id="@+id/adminPanelText6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="84dp"
+                android:text="Enrolment"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enrolmentImg2" />
+
+            <ImageView
+                android:id="@+id/paymentImg2"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText3"
+                app:srcCompat="@drawable/function4" />
+
+            <ImageView
+                android:id="@+id/logImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText5"
+                app:srcCompat="@drawable/function11" />
+
+            <ImageView
+                android:id="@+id/enrolmentImg2"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText4"
+                app:srcCompat="@drawable/function1" />
+
+            <TextView
+                android:id="@+id/adminPanelText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="16dp"
+                android:text="Subject"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/subjectImg" />
+
+            <TextView
+                android:id="@+id/adminPanelText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="96dp"
+                android:text="Result"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resultImg" />
+
+            <ImageView
+                android:id="@+id/subjectImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText1"
+                app:srcCompat="@drawable/function9" />
+
+            <ImageView
+                android:id="@+id/resultImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText2"
+                app:srcCompat="@drawable/function2" />
+
+            <TextView
+                android:id="@+id/adminPanelText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="92dp"
+                android:text="Lecturer"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecturerImg" />
+
+            <TextView
+                android:id="@+id/adminPanelText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="16dp"
+                android:text="User"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userImg" />
+
+            <ImageView
+                android:id="@+id/lecturerImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function8" />
+
+            <ImageView
+                android:id="@+id/userImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function7" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

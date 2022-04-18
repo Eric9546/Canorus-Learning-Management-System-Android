@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.353" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/layout/activity_admin_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/layout/activity_student_panel.xml" value="0.3490740740740741" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/menu/action_bar.xml" value="0.3490740740740741" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/menu/admin_panel_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/menu/enrolment_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/menu/lecturer_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Canorus Management System/app/src/main/res/menu/subject_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3525" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/layout/activity_admin_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/layout/activity_lecturer_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/layout/activity_student_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/menu/assignment_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/menu/enrolment_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/menu/lecturer_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus Learning Management System/app/src/main/res/menu/subject_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus-Learning-Management-System-Android/app/src/main/res/layout/activity_admin_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus-Learning-Management-System-Android/app/src/main/res/layout/activity_lecturer_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Individual Project/Mobile Application/Canorus-Learning-Management-System-Android/app/src/main/res/layout/activity_student_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Learning Management System/app/src/main/res/layout/activity_admin_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Learning Management System/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/layout/activity_admin_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/layout/activity_student_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/menu/enrolment_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/menu/user_popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.353" />
+        <entry key="..\:/Desktop/College Shit/Degree/Semester 4/Mobile Application/Canorus Management System/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.353" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LecturerPanel"
+    android:orientation="horizontal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/lecPanelText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="22dp"
+                android:text="Edit/Remove Annoucements"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintTop_toBottomOf="@+id/lecAnnoucementImg" />
+
+            <ImageView
+                android:id="@+id/lecAnnoucementImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecPanelText2"
+                app:srcCompat="@drawable/function14" />
+
+            <TextView
+                android:id="@+id/lecPanelText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="16dp"
+                android:text="Assignment"
+                android:textColor="#EE4266"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecAssignmentImg" />
+
+            <ImageView
+                android:id="@+id/lecAssignmentImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecPanelText1"
+                app:srcCompat="@drawable/function13" />
+
+            <TextView
+                android:id="@+id/lecPanelText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="56dp"
+                android:text="Edit/Remove Notes"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintTop_toBottomOf="@+id/lecNotesImg" />
+
+            <ImageView
+                android:id="@+id/lecNotesImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function12" />
+
+            <TextView
+                android:id="@+id/lecPanelText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="16dp"
+                android:text="View Timetable"
+                android:textColor="#EE4266"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lecTimetableImg" />
+
+            <ImageView
+                android:id="@+id/lecTimetableImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentPanel" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/stuPanelText9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="16dp"
+                android:text="View Annoucements"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/announcementImg" />
+
+            <ImageView
+                android:id="@+id/announcementImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText7"
+                app:srcCompat="@drawable/function14" />
+
+            <TextView
+                android:id="@+id/stuPanelText8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="68dp"
+                android:text="View Assigment"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/assignmentImg" />
+
+            <ImageView
+                android:id="@+id/notesImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText5"
+                app:srcCompat="@drawable/function12" />
+
+            <ImageView
+                android:id="@+id/assignmentImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText6"
+                app:srcCompat="@drawable/function13" />
+
+            <ImageView
+                android:id="@+id/contactImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText3"
+                app:srcCompat="@drawable/function5" />
+
+            <ImageView
+                android:id="@+id/detailsImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText4"
+                app:srcCompat="@drawable/function6" />
+
+            <TextView
+                android:id="@+id/stuPanelText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="16dp"
+                android:text="Contact Lecturer"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactImg" />
+
+            <TextView
+                android:id="@+id/stuPanelText7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="86dp"
+                android:layout_marginTop="16dp"
+                android:text="View Notes"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/notesImg" />
+
+            <TextView
+                android:id="@+id/stuPanelText6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="42dp"
+                android:text="Change Account Details"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailsImg" />
+
+            <TextView
+                android:id="@+id/stuPanelText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="72dp"
+                android:text="Make Payment"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentImg" />
+
+            <ImageView
+                android:id="@+id/timetableImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText1"
+                app:srcCompat="@drawable/function3" />
+
+            <ImageView
+                android:id="@+id/paymentImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuPanelText2"
+                app:srcCompat="@drawable/function4" />
+
+            <TextView
+                android:id="@+id/stuPanelText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="74dp"
+                android:layout_marginTop="16dp"
+                android:text="View Timetable"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timetableImg" />
+
+            <ImageView
+                android:id="@+id/resultsImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function2" />
+
+            <ImageView
+                android:id="@+id/enrolmentImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/function1" />
+
+            <TextView
+                android:id="@+id/stuPanelText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:text="Subject Enrolment"
+                android:textColor="#EE4266"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enrolmentImg" />
+
+            <TextView
+                android:id="@+id/stuPanelText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="78dp"
+                android:text="View Results"
+                android:textColor="#EE4266"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resultsImg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>
