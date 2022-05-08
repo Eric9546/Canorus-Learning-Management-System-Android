@@ -100,8 +100,8 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
                 Toast.makeText(LecturerPanel.this, "edit_assignment", Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.view_assignment:
-                Toast.makeText(LecturerPanel.this, "view_assignment", Toast.LENGTH_SHORT).show();
+            case R.id.view_submission:
+                Toast.makeText(LecturerPanel.this, "view_submission", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:

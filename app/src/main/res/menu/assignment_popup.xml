@@ -5,6 +5,6 @@
         android:id="@+id/edit_assignment"
         android:title="Edit/Remove Assignment" />
     <item
-        android:id="@+id/view_assignment"
-        android:title="View Assignment" />
+        android:id="@+id/view_submission"
+        android:title="View Assignment Submissions" />
 </menu>
