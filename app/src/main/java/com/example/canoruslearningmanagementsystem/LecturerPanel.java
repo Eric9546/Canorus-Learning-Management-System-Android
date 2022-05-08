@@ -24,7 +24,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
     private SharedPreferences mPreferences;
     private String spFileName = "com.example.session";
 
-    ImageView mTimetable, mNotes, mAssignment, mAnnoucement;
+    ImageView mTimetable, mNotes, mAssignment, mAnnouncement, mAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,7 +35,8 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
         mTimetable = findViewById(R.id.lecTimetableImg);
         mNotes = findViewById(R.id.lecNotesImg);
         mAssignment = findViewById(R.id.lecAssignmentImg);
-        mAnnoucement = findViewById(R.id.lecAnnoucementImg);
+        mAnnouncement = findViewById(R.id.lecAnnouncementImg);
+        mAttendance = findViewById(R.id.lecAttendanceImg);
 
         // Set onclick listeners for all lecturer panel functions //
         mTimetable.setOnClickListener(new View.OnClickListener()
@@ -68,12 +69,21 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
             }
         });
 
-        mAnnoucement.setOnClickListener(new View.OnClickListener()
+        mAnnouncement.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 Toast.makeText(LecturerPanel.this, "ANNOUCEMENT", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mAttendance.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Toast.makeText(LecturerPanel.this, "ATTENDANCE", Toast.LENGTH_SHORT).show();
             }
         });
 

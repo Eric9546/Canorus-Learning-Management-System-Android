@@ -35,7 +35,7 @@ public class StudentPanel extends AppCompatActivity
     private SharedPreferences mPreferences;
     private String spFileName = "com.example.session";
 
-    ImageView mEnrol, mResults, mTimetable, mPayment, mContact, mChange, mNotes, mAssignment, mAnnoucements;
+    ImageView mEnrol, mResults, mTimetable, mPayment, mContact, mChange, mNotes, mAssignment, mAnnouncements, mAttendance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,7 +51,8 @@ public class StudentPanel extends AppCompatActivity
         mChange = findViewById(R.id.detailsImg);
         mNotes = findViewById(R.id.notesImg);
         mAssignment = findViewById(R.id.assignmentImg);
-        mAnnoucements = findViewById(R.id.announcementImg);
+        mAnnouncements = findViewById(R.id.announcementImg);
+        mAttendance = findViewById(R.id.attendanceImg);
 
         // Set onclick listeners for all student panel functions //
         mEnrol.setOnClickListener(new View.OnClickListener()
@@ -129,12 +130,22 @@ public class StudentPanel extends AppCompatActivity
             }
         });
 
-        mAnnoucements.setOnClickListener(new View.OnClickListener()
+        mAnnouncements.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 Toast.makeText(StudentPanel.this, "ANNOUNCEMENTS", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mAttendance.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Toast.makeText(StudentPanel.this, "ATTENDANCE", Toast.LENGTH_SHORT).show();
                 sentPush();
 
             }
