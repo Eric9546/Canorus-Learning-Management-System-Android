@@ -55,6 +55,8 @@ public class Login extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Set up the default push notification //
+        FirebaseMessaging.getInstance().deleteToken();
         FirebaseMessaging.getInstance().subscribeToTopic("default");
 
         mPreferences = getSharedPreferences(spFileName, MODE_PRIVATE);
@@ -72,6 +74,9 @@ public class Login extends AppCompatActivity
 
                 if (spAccessLevel.equals("Student"))
                 {
+
+                    // Set up push notification for announcements //
+                    setUpAnnouncementPush(spId);
 
                     // Log the login data //
                     logLogin(spAccessLevel, spId);
@@ -199,6 +204,9 @@ public class Login extends AppCompatActivity
                                     spEditor.putString(PROGRAM_KEY, sbProgram);
                                     spEditor.apply();
 
+                                    // Set up push notification for announcements //
+                                    setUpAnnouncementPush(dbId);
+
                                     // Log the login data //
                                     logLogin(dbAccessLevel, dbId);
 
@@ -304,7 +312,7 @@ public class Login extends AppCompatActivity
                     @Override
                     public void onSuccess(DocumentReference documentReference)
                     {
-                        Toast.makeText(Login.this, "Login Log Stored Success", Toast.LENGTH_SHORT).show();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener()
@@ -315,6 +323,40 @@ public class Login extends AppCompatActivity
                         Toast.makeText(Login.this, "Login Log Stored Failure", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+    }
+
+    public void setUpAnnouncementPush (String id)
+    {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Enrolment/" + id.toUpperCase());
+
+        myRef.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+
+                for (DataSnapshot item:snapshot.getChildren())
+                {
+
+                    FirebaseMessaging.getInstance().subscribeToTopic(item.child("subId").getValue().toString());
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+
+                Toast.makeText(Login.this, "Push Notification Setup Error", Toast.LENGTH_SHORT).show();
+                mProgress.setVisibility(View.INVISIBLE);
+
+            }
+
+        });
 
     }
 
