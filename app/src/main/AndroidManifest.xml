@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".StudentAttendanceQR"
+            android:exported="false"
+            android:label="Student Attendance QR"/>
+        <activity
             android:name=".LecturerPanel"
             android:exported="false"
-            android:label="Lecturer Panel"/>
+            android:label="Lecturer Panel" />
         <activity
             android:name=".AdminPanel"
             android:exported="false"
@@ -43,6 +48,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

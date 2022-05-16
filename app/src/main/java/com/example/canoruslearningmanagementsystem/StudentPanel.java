@@ -136,6 +136,7 @@ public class StudentPanel extends AppCompatActivity
             public void onClick(View view)
             {
                 Toast.makeText(StudentPanel.this, "ANNOUNCEMENTS", Toast.LENGTH_SHORT).show();
+                sentPush();
 
             }
         });
@@ -146,7 +147,9 @@ public class StudentPanel extends AppCompatActivity
             public void onClick(View view)
             {
                 Toast.makeText(StudentPanel.this, "ATTENDANCE", Toast.LENGTH_SHORT).show();
-                sentPush();
+
+                // Redirect user to respective panels //
+                startActivity (new Intent(getApplicationContext(), StudentAttendanceQR.class));
 
             }
         });
