@@ -221,7 +221,7 @@ public class StudentPanel extends AppCompatActivity
             String URL = "https://fcm.googleapis.com/fcm/send";
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
                     json,
-                    response -> Log.d("MUR", "onResponse: "),
+                    response -> Log.d("MUR", "onResponse: " + response.toString()),
                     error -> Log.d("MUR", "onError: " + error.networkResponse)
             ) {
                 @Override
