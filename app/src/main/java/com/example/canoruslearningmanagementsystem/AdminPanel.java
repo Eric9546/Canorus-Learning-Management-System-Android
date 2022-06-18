@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.canoruslearningmanagementsystem.R;
-
 public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener
 {
 
@@ -26,7 +24,7 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
     private SharedPreferences mPreferences;
     private String spFileName = "com.example.session";
 
-    ImageView mUser, mLecturer, mSubject, mResult, mPayment, mEnrolment, mLog;
+    ImageView mUser, mLecturer, mSubject, mResult, mPayment, mEnrolment, mStudent, mLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,6 +39,7 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
         mPayment = findViewById(R.id.paymentImg2);
         mEnrolment = findViewById(R.id.enrolmentImg2);
         mLog = findViewById(R.id.logImg);
+        mStudent = findViewById(R.id.stuImg);
 
         // Set onclick listeners for all admin panel functions //
         mUser.setOnClickListener(new View.OnClickListener()
@@ -52,7 +51,7 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
 
                 PopupMenu popup = new PopupMenu(AdminPanel.this, view);
                 popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.user_popup);
+                popup.inflate(R.menu.staff_popup);
                 popup.show();
 
             }
@@ -123,6 +122,20 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             }
         });
 
+        mStudent.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                popup.setOnMenuItemClickListener(AdminPanel.this);
+                popup.inflate(R.menu.student_popup);
+                popup.show();
+
+            }
+        });
+
         mLog.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -143,11 +156,11 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
         switch (item.getItemId())
         {
 
-            case R.id.add_user:
+            case R.id.add_staff:
                 Toast.makeText(AdminPanel.this, "add_user", Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.view_user:
+            case R.id.view_staff:
                 Toast.makeText(AdminPanel.this, "view_user", Toast.LENGTH_SHORT).show();
                 return true;
 
@@ -185,6 +198,14 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
 
             case R.id.remove_program_session:
                 Toast.makeText(AdminPanel.this, "remove_program_session", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.add_student:
+                Toast.makeText(AdminPanel.this, "add_student", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.view_student:
+                Toast.makeText(AdminPanel.this, "view_student", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:

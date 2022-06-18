@@ -16,6 +16,29 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/adminPanelText8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="98dp"
+                android:layout_marginTop="16dp"
+                android:text="Student"
+                android:textColor="#EE4266"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stuImg" />
+
+            <ImageView
+                android:id="@+id/stuImg"
+                android:layout_width="109dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="16dp"
+                android:background="#000000"
+                android:padding="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText5"
+                app:srcCompat="@drawable/function16" />
+
+            <TextView
                 android:id="@+id/adminPanelText5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,11 +53,11 @@
                 android:id="@+id/adminPanelText7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="110dp"
                 android:text="Log"
                 android:textColor="#EE4266"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logImg" />
 
             <TextView
@@ -64,12 +87,12 @@
                 android:id="@+id/logImg"
                 android:layout_width="109dp"
                 android:layout_height="101dp"
-                android:layout_marginStart="64dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="66dp"
                 android:background="#000000"
                 android:padding="1dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/adminPanelText5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adminPanelText6"
                 app:srcCompat="@drawable/function11" />
 
             <ImageView

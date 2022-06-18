@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/add_staff"
+        android:title="Add Staff" />
+
+    <item
+        android:id="@+id/view_staff"
+        android:title="Edit/Remove Staff" />
+
+</menu>
