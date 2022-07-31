@@ -72,44 +72,79 @@ public class Login extends AppCompatActivity
                 String spAccessLevel = mPreferences.getString(ACCESS_LEVEL_KEY, "");
                 String spId = mPreferences.getString(ID_KEY, "");
 
-                if (spAccessLevel.equals("Student"))
+                // Update the user session //
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("Registration/" + spId.toUpperCase());
+
+                myRef.addValueEventListener(new ValueEventListener()
                 {
 
-                    // Set up push notification for announcements //
-                    setUpAnnouncementPush(spId);
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                    {
 
-                    // Log the login data //
-                    logLogin(spAccessLevel, spId);
+                        String dbId = snapshot.child("id").getValue().toString();
+                        String dbPassword = snapshot.child("password").getValue().toString();
+                        String dbAccessLevel = snapshot.child("access_level").getValue().toString();
+                        String dbSession = snapshot.child("session").getValue().toString();
+                        String sbProgram = snapshot.child("program").getValue().toString();
 
-                    // Redirect user to respective panels //
-                    startActivity (new Intent(getApplicationContext(), StudentPanel.class));
-                    finish();
+                        // Set session data //
+                        spEditor.putString(LOGIN_STATUS_KEY, "TRUE");
+                        spEditor.putString(ID_KEY, dbId);
+                        spEditor.putString(ACCESS_LEVEL_KEY, dbAccessLevel);
+                        spEditor.putString(SESSION_KEY, dbSession);
+                        spEditor.putString(PROGRAM_KEY, sbProgram);
+                        spEditor.apply();
 
-                }
+                        if (spAccessLevel.equals("Student"))
+                        {
 
-                else if (spAccessLevel.equals("Lecturer"))
-                {
+                            // Set up push notification for announcements //
+                            setUpAnnouncementPush(spId);
 
-                    // Log the login data //
-                    logLogin(spAccessLevel, spId);
+                            // Log the login data //
+                            logLogin(spAccessLevel, spId);
 
-                    // Redirect user to respective panels //
-                    startActivity (new Intent(getApplicationContext(), LecturerPanel.class));
-                    finish();
+                            // Redirect user to respective panels //
+                            startActivity (new Intent(getApplicationContext(), StudentPanel.class));
+                            finish();
 
-                }
+                        }
 
-                else
-                {
+                        else if (spAccessLevel.equals("Lecturer"))
+                        {
 
-                    // Log the login data //
-                    logLogin(spAccessLevel, spId);
+                            // Log the login data //
+                            logLogin(spAccessLevel, spId);
 
-                    // Redirect user to respective panels //
-                    startActivity (new Intent(getApplicationContext(), AdminPanel.class));
-                    finish();
+                            // Redirect user to respective panels //
+                            startActivity (new Intent(getApplicationContext(), LecturerPanel.class));
+                            finish();
 
-                }
+                        }
+
+                        else
+                        {
+
+                            // Log the login data //
+                            logLogin(spAccessLevel, spId);
+
+                            // Redirect user to respective panels //
+                            startActivity (new Intent(getApplicationContext(), AdminPanel.class));
+                            finish();
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+                    }
+
+                });
 
             }
 
@@ -320,7 +355,7 @@ public class Login extends AppCompatActivity
                     @Override
                     public void onFailure(@NonNull Exception e)
                     {
-                        Toast.makeText(Login.this, "Login Log Stored Failure", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

@@ -219,7 +219,7 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
     public boolean onCreateOptionsMenu (Menu menu)
     {
 
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_main, menu);
         return super.onCreateOptionsMenu(menu);
 
     }

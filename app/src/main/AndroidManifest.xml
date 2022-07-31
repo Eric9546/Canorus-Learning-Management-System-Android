@@ -15,9 +15,115 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".ViewAnnouncementsFiltered"
+            android:exported="false"
+            android:label="View Announcements"
+            android:parentActivityName=".ViewAnnouncements"/>
+        <activity
+            android:name=".ViewAnnouncements"
+            android:exported="false"
+            android:label="View Announcements"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
+            android:name=".StudentEnrolment"
+            android:exported="false"
+            android:label="Subject Add/Drop"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentAttendance"
+            android:exported="false"
+            android:label="Edit Attendance"
+            android:parentActivityName=".StudentAttendanceFiltered" />
+        <activity
+            android:name=".StudentAttendanceFiltered"
+            android:exported="false"
+            android:label="View Attendance"
+            android:parentActivityName=".StudentAttendanceChoose" />
+        <activity
+            android:name=".StudentAttendanceChoose"
+            android:exported="false"
+            android:label="View Attendance"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentAssignmentSubmit"
+            android:exported="false"
+            android:label="View Assignment"
+            android:parentActivityName=".StudentAssignmentFiltered" />
+        <activity
+            android:name=".StudentAssignmentFiltered"
+            android:exported="false"
+            android:label="View Assignment"
+            android:parentActivityName=".StudentAssignmentChoose" />
+        <activity
+            android:name=".StudentAssignmentChoose"
+            android:exported="false"
+            android:label="View Assignment"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentCheckout"
+            android:exported="false"
+            android:label="Make Payment"
+            android:parentActivityName=".StudentPayment" />
+        <activity
+            android:name=".StudentPayment"
+            android:exported="false"
+            android:label="Make Payment"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentNotes"
+            android:exported="false"
+            android:label="View Notes"
+            android:parentActivityName=".StudentNotesFiltered" />
+        <activity
+            android:name=".StudentNotesFiltered"
+            android:exported="false"
+            android:label="View Notes"
+            android:parentActivityName=".StudentNotesChoose" />
+        <activity
+            android:name=".StudentNotesChoose"
+            android:exported="false"
+            android:label="View Notes"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentAnnouncementsFiltered"
+            android:exported="false"
+            android:label="View Announcements"
+            android:parentActivityName=".StudentAnnouncementsChoose" />
+        <activity
+            android:name=".StudentAnnouncementsChoose"
+            android:exported="false"
+            android:label="View Announcements"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentResult"
+            android:exported="false"
+            android:label="View Results"
+            android:parentActivityName=".StudentResultChoose" />
+        <activity
+            android:name=".StudentResultChoose"
+            android:exported="false"
+            android:label="View Results"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".ChangeDetails"
+            android:exported="false"
+            android:label="Change Details"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentContact"
+            android:exported="false"
+            android:label="Contact Lecturer"
+            android:parentActivityName=".StudentPanel" />
+        <activity
+            android:name=".StudentTimetable"
+            android:exported="false"
+            android:label="View Timetable"
+            android:parentActivityName=".StudentPanel" />
+        <activity
             android:name=".StudentAttendanceQR"
             android:exported="false"
-            android:label="Student Attendance QR"/>
+            android:label="Scan Attendance QR"
+            android:parentActivityName=".StudentAttendance" />
         <activity
             android:name=".LecturerPanel"
             android:exported="false"

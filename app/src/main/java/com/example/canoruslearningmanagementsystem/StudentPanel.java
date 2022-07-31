@@ -21,7 +21,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class StudentPanel extends AppCompatActivity
 {
@@ -43,6 +45,10 @@ public class StudentPanel extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_panel);
 
+        // Get session details //
+        mPreferences = getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor spEditor = mPreferences.edit();
+
         mEnrol = findViewById(R.id.enrolmentImg);
         mResults = findViewById(R.id.resultsImg);
         mTimetable = findViewById(R.id.timetableImg);
@@ -60,7 +66,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "ENROL", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), StudentEnrolment.class));
             }
         });
 
@@ -69,7 +75,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "RESULTS", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), StudentResultChoose.class));
             }
         });
 
@@ -78,7 +84,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "TIMETABLE", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), StudentTimetable.class));
             }
         });
 
@@ -87,7 +93,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "PAYMENT", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), StudentPayment.class));
             }
         });
 
@@ -96,7 +102,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "CONTACT", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), StudentContact.class));
             }
         });
 
@@ -105,8 +111,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "CHANGE", Toast.LENGTH_SHORT).show();
-
+                startActivity (new Intent(getApplicationContext(), ChangeDetails.class));
             }
         });
 
@@ -115,8 +120,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "NOTES", Toast.LENGTH_SHORT).show();
-
+                startActivity (new Intent(getApplicationContext(), StudentNotesChoose.class));
             }
         });
 
@@ -125,8 +129,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "ASSIGNMENT", Toast.LENGTH_SHORT).show();
-
+                startActivity (new Intent(getApplicationContext(), StudentAssignmentChoose.class));
             }
         });
 
@@ -135,9 +138,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "ANNOUNCEMENTS", Toast.LENGTH_SHORT).show();
-                sentPush();
-
+                startActivity (new Intent(getApplicationContext(), StudentAnnouncementsChoose.class));
             }
         });
 
@@ -146,11 +147,7 @@ public class StudentPanel extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(StudentPanel.this, "ATTENDANCE", Toast.LENGTH_SHORT).show();
-
-                // Redirect user to respective panels //
-                startActivity (new Intent(getApplicationContext(), StudentAttendanceQR.class));
-
+                startActivity (new Intent(getApplicationContext(), StudentAttendanceChoose.class));
             }
         });
 
@@ -160,7 +157,7 @@ public class StudentPanel extends AppCompatActivity
     public boolean onCreateOptionsMenu (Menu menu)
     {
 
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_main, menu);
         return super.onCreateOptionsMenu(menu);
 
     }
@@ -177,8 +174,10 @@ public class StudentPanel extends AppCompatActivity
 
             case R.id.home:
 
-                startActivity (new Intent(getApplicationContext(), StudentPanel.class));
                 finish();
+                overridePendingTransition(0, 0);
+                startActivity (new Intent(getApplicationContext(), StudentPanel.class));
+                overridePendingTransition(0, 0);
 
                 return true;
 

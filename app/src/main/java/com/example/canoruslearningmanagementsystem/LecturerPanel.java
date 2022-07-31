@@ -74,7 +74,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(LecturerPanel.this, "ANNOUCEMENT", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewAnnouncements.class));
             }
         });
 
@@ -115,7 +115,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
     public boolean onCreateOptionsMenu (Menu menu)
     {
 
-        getMenuInflater().inflate(R.menu.action_bar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_main, menu);
         return super.onCreateOptionsMenu(menu);
 
     }
