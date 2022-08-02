@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -85,7 +82,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
 
         stuId = spId;
 
-        mSubmit = findViewById(R.id.studentEnrolmentButton);
+        mSubmit = findViewById(R.id.viewAnnouncementsFilteredSubmit);
         Spinner mSpinner = findViewById(R.id.studentEnrolmentDropdown);
         mSpinner.setOnItemSelectedListener(this);
 
@@ -479,7 +476,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
                         }
 
                         // set up the RecyclerView
-                        RecyclerView recyclerView = findViewById(R.id.studentEnrolmentRecycler);
+                        RecyclerView recyclerView = findViewById(R.id.viewAnnouncementFilteredRecycler);
                         recyclerView.setLayoutManager(new LinearLayoutManager(StudentEnrolment.this));
                         adapter = new TwoRowAdapter (StudentEnrolment.this, row2, row3);
                         adapter.setClickListener(StudentEnrolment.this);

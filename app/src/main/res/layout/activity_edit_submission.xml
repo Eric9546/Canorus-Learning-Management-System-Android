@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewAnnouncementsFiltered">
+    tools:context=".EditSubmission">
 
     <TextView
-        android:id="@+id/viewAnnouncementsFilteredText1"
+        android:id="@+id/editSubmissionText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Title"
+        android:text="Search Student ID"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAnnouncementFilteredRecycler"
+        android:id="@+id/editSubmissionRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -30,58 +30,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/editSubmissionSubmit" />
 
     <Button
-        android:id="@+id/viewAnnouncementsFilteredSubmit"
+        android:id="@+id/editSubmissionSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:ems="15"
-        android:text="Add Announcement"
+        android:ems="6"
+        android:text="Search"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredTitle" />
-
-    <TextView
-        android:id="@+id/viewAnnouncementsFilteredText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Details"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editSubmissionId" />
 
     <EditText
-        android:id="@+id/viewAnnouncementsFilteredTitle"
+        android:id="@+id/editSubmissionId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
         android:ems="8"
-        android:hint="Title"
+        android:hint="Enter Student ID"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText1" />
+        app:layout_constraintTop_toBottomOf="@+id/editSubmissionText1" />
 
-    <EditText
-        android:id="@+id/viewAnnouncementsFilteredDetails"
+    <Button
+        android:id="@+id/editSubmissionFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/border"
-        android:ems="8"
-        android:hint="Details"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:ems="16"
+        android:text="Hide Graded Assignments"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editSubmissionId" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

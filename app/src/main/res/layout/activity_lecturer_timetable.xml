@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentTimetable">
+    tools:context=".LecturerTimetable">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/studentTimetableRecycler"
+        android:id="@+id/lecturerTimetableRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"

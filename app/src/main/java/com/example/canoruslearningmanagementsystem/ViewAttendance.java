@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ViewAnnouncements extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+public class ViewAttendance extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 
     // Set up the session variables //
@@ -38,25 +39,28 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
 
     ArrayList<String> row1 = new ArrayList<>();
     ArrayList<String> row2 = new ArrayList<>();
+    ArrayList<String> row3 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_announcements);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_view_attendance);
 
         // Get session details //
         mPreferences = getSharedPreferences(spFileName, MODE_PRIVATE);
         SharedPreferences.Editor spEditor = mPreferences.edit();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
 
-        Button mSubmit = findViewById(R.id.viewAnnouncementsSubmit);
-        Spinner mSpinner = findViewById(R.id.viewAnnouncementsSpinner);
-        mSpinner.setOnItemSelectedListener(this);
+        Button mSubmit = findViewById(R.id.viewAttendanceSubmit);
+        Spinner mSubId = findViewById(R.id.viewAttendanceSpinnerSubject);
+        Spinner mSession = findViewById(R.id.viewAttendanceSpinnerSession);
+        mSubId.setOnItemSelectedListener(this);
+        mSession.setOnItemSelectedListener(this);
 
         // Retrieve data from database //
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -78,27 +82,65 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
                         row2.add(item.child("subId").getValue().toString());
 
                         // Set up the drop down menu
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewAnnouncements.this, android.R.layout.simple_spinner_item, row1);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewAttendance.this, android.R.layout.simple_spinner_item, row1);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        mSpinner.setAdapter(adapter);
-
-                        mSubmit.setOnClickListener(new View.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(View view)
-                            {
-
-                                Intent intent = new Intent(ViewAnnouncements.this, ViewAnnouncementsFiltered.class);
-                                intent.putExtra("subId", subId);
-                                startActivity(intent);
-
-                            }
-
-                        });
+                        mSubId.setAdapter(adapter);
+                        mSession.setAdapter(adapter);
 
                     }
 
                 }
+
+                // Retrieve data from database //
+                FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+                DatabaseReference stage2 = database2.getReference("Session/");
+
+                stage2.addValueEventListener(new ValueEventListener()
+                {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot2)
+                    {
+
+                        for (DataSnapshot item2:snapshot2.getChildren())
+                        {
+
+                            row3.add(item2.child("session").getValue().toString());
+
+                            // Set up the drop down menu
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewAttendance.this, android.R.layout.simple_spinner_item, row3);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            mSession.setAdapter(adapter);
+
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error)
+                    {
+
+
+
+                    }
+
+                });
+
+
+                mSubmit.setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View view)
+                    {
+
+                        Intent intent = new Intent(ViewAttendance.this, ViewAttendanceFiltered.class);
+                        intent.putExtra("subId", subId);
+                        intent.putExtra("session", mSession.getSelectedItem().toString());
+                        startActivity(intent);
+
+                    }
+
+                });
 
             }
 
@@ -139,7 +181,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
 
                 finish();
                 overridePendingTransition(0, 0);
-                startActivity (new Intent(getApplicationContext(), ViewAnnouncements.class));
+                startActivity (new Intent(getApplicationContext(), ViewAttendance.class));
                 overridePendingTransition(0, 0);
 
                 return true;

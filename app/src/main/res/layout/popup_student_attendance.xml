@@ -7,7 +7,7 @@
     android:background="@drawable/popup_border">
 
     <EditText
-        android:id="@+id/popup_student_pin"
+        android:id="@+id/popup_edit_submission_grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,10 +20,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_student_text1" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_edit_submission_text1" />
 
     <Button
-        android:id="@+id/popup_student_submit_pin"
+        android:id="@+id/popup_edit_submission_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_student_pin" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_edit_submission_grade" />
 
     <TextView
-        android:id="@+id/popup_student_text1"
+        android:id="@+id/popup_edit_submission_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/popup_student_qr"
+        android:id="@+id/popup_edit_submission_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -61,6 +61,6 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popup_student_submit_pin" />
+        app:layout_constraintTop_toBottomOf="@+id/popup_edit_submission_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

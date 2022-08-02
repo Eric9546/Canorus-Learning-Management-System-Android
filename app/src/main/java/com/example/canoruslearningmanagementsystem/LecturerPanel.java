@@ -44,7 +44,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(LecturerPanel.this, "TIMETABLE", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), LecturerTimetable.class));
             }
         });
 
@@ -53,7 +53,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(LecturerPanel.this, "NOTES", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewNotes.class));
             }
         });
 
@@ -83,7 +83,7 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public void onClick(View view)
             {
-                Toast.makeText(LecturerPanel.this, "ATTENDANCE", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewAttendance.class));
             }
         });
 
@@ -97,11 +97,11 @@ public class LecturerPanel extends AppCompatActivity implements PopupMenu.OnMenu
         {
 
             case R.id.edit_assignment:
-                Toast.makeText(LecturerPanel.this, "edit_assignment", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewAssignment.class));
                 return true;
 
             case R.id.view_submission:
-                Toast.makeText(LecturerPanel.this, "view_submission", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewSubmission.class));
                 return true;
 
             default:

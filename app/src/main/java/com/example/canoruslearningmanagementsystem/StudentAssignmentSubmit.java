@@ -127,8 +127,7 @@ public class StudentAssignmentSubmit extends AppCompatActivity implements Adapte
 
                         String submitDate = logDate.format(date) + ", " + logTime.format(date);
 
-                       // Update the database
-
+                        // Update the database //
                         FirebaseDatabase database3 = FirebaseDatabase.getInstance();
                         DatabaseReference stage3 = database3.getReference(record_to_submit);
 
@@ -138,7 +137,6 @@ public class StudentAssignmentSubmit extends AppCompatActivity implements Adapte
                         stage3.child("comment").setValue("N/A");
                         stage3.child("submitDate").setValue(submitDate);
                         stage3.child("fileName").setValue(newfilename);
-
 
                         Intent intent = new Intent(StudentAssignmentSubmit.this, StudentAssignmentSubmit.class);
                         intent.putExtra("subId", subId);

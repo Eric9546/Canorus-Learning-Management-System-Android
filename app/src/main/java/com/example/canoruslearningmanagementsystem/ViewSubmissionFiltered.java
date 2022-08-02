@@ -2,6 +2,8 @@ package com.example.canoruslearningmanagementsystem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +11,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ViewAnnouncements extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+public class ViewSubmissionFiltered extends AppCompatActivity implements TwoRowAdapter.ItemClickListener
 {
 
     // Set up the session variables //
@@ -34,8 +32,11 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
     private SharedPreferences mPreferences;
     private String spFileName = "com.example.session";
 
+    TwoRowAdapter adapter;
+
     String subId = "";
 
+    // Set up array to store info from database //
     ArrayList<String> row1 = new ArrayList<>();
     ArrayList<String> row2 = new ArrayList<>();
 
@@ -44,7 +45,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
     {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_announcements);
+        setContentView(R.layout.activity_view_submission_filtered);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get session details //
@@ -54,16 +55,20 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
 
-        Button mSubmit = findViewById(R.id.viewAnnouncementsSubmit);
-        Spinner mSpinner = findViewById(R.id.viewAnnouncementsSpinner);
-        mSpinner.setOnItemSelectedListener(this);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            subId = extras.getString("subId");
+
+        }
 
         // Retrieve data from database //
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference stage1 = database.getReference("Subject/");
+        DatabaseReference stage1 = database.getReference("Assignment/" + subId + "/Question");
 
         stage1.addValueEventListener(new ValueEventListener()
         {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
@@ -71,34 +76,17 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
                 for (DataSnapshot item:snapshot.getChildren())
                 {
 
-                    if (item.child("lecId").getValue().toString().equalsIgnoreCase(spId))
-                    {
-
-                        row1.add(item.child("subId").getValue().toString() + " - " + item.child("subName").getValue().toString());
-                        row2.add(item.child("subId").getValue().toString());
-
-                        // Set up the drop down menu
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewAnnouncements.this, android.R.layout.simple_spinner_item, row1);
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        mSpinner.setAdapter(adapter);
-
-                        mSubmit.setOnClickListener(new View.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(View view)
-                            {
-
-                                Intent intent = new Intent(ViewAnnouncements.this, ViewAnnouncementsFiltered.class);
-                                intent.putExtra("subId", subId);
-                                startActivity(intent);
-
-                            }
-
-                        });
-
-                    }
+                    row1.add(item.child("assignTitle").getValue().toString());
+                    row2.add(item.child("assignDesc").getValue().toString() + " | " + item.child("dueDate").getValue().toString());
 
                 }
+
+                // set up the RecyclerView
+                RecyclerView recyclerView = findViewById(R.id.viewSubmissionFilteredRecycler);
+                recyclerView.setLayoutManager(new LinearLayoutManager(ViewSubmissionFiltered.this));
+                adapter = new TwoRowAdapter (ViewSubmissionFiltered.this, row1, row2);
+                adapter.setClickListener(ViewSubmissionFiltered.this);
+                recyclerView.setAdapter(adapter);
 
             }
 
@@ -109,6 +97,23 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
             }
 
         });
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position)
+    {
+
+        String record_to_view = "Assignment/" + subId + "/Submit/" + row1.get(position);
+        String assignTitle = row1.get(position);
+
+        Intent intent = new Intent(ViewSubmissionFiltered.this, EditSubmission.class);
+        intent.putExtra("subId", subId);
+        intent.putExtra("record_to_view", record_to_view);
+        intent.putExtra("assignTitle", assignTitle);
+        intent.putExtra("filter", "");
+        intent.putExtra("search", "");
+        startActivity(intent);
 
     }
 
@@ -139,7 +144,9 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
 
                 finish();
                 overridePendingTransition(0, 0);
-                startActivity (new Intent(getApplicationContext(), ViewAnnouncements.class));
+                Intent intent = new Intent(ViewSubmissionFiltered.this, ViewSubmissionFiltered.class);
+                intent.putExtra("subId", subId);
+                startActivity(intent);
                 overridePendingTransition(0, 0);
 
                 return true;
@@ -148,20 +155,6 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
                 return super.onOptionsItemSelected(item);
 
         }
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-    {
-
-        subId = row2.get(position).toString();
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView)
-    {
 
     }
 

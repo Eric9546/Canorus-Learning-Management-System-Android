@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewAnnouncementsFiltered">
+    tools:context=".ViewNotesFiltered">
 
     <TextView
-        android:id="@+id/viewAnnouncementsFilteredText1"
+        android:id="@+id/viewNotesFilteredText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Title"
+        android:text="Content Name"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAnnouncementFilteredRecycler"
+        android:id="@+id/viewNotesFilteredRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -30,58 +30,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/viewNotesFilteredSubmit" />
 
     <Button
-        android:id="@+id/viewAnnouncementsFilteredSubmit"
+        android:id="@+id/viewNotesFilteredSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="15"
-        android:text="Add Announcement"
+        android:text="Add Content"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredTitle" />
-
-    <TextView
-        android:id="@+id/viewAnnouncementsFilteredText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Details"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/viewNotesFilteredContentName" />
 
     <EditText
-        android:id="@+id/viewAnnouncementsFilteredTitle"
+        android:id="@+id/viewNotesFilteredContentName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
         android:ems="8"
-        android:hint="Title"
+        android:hint="Content Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText1" />
-
-    <EditText
-        android:id="@+id/viewAnnouncementsFilteredDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/border"
-        android:ems="8"
-        android:hint="Details"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText2" />
+        app:layout_constraintTop_toBottomOf="@+id/viewNotesFilteredText1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

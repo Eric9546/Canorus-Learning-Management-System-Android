@@ -15,10 +15,80 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".EditAttendanceList"
+            android:exported="false"
+            android:label="Edit Attendance"
+            android:parentActivityName=".EditAttendance"/>
+        <activity
+            android:name=".EditAttendance"
+            android:exported="false"
+            android:label="Edit Attendance"
+            android:parentActivityName=".ViewAttendanceFiltered" />
+        <activity
+            android:name=".ViewAttendanceFiltered"
+            android:exported="false"
+            android:label="View Attendance"
+            android:parentActivityName=".ViewAttendance" />
+        <activity
+            android:name=".ViewAttendance"
+            android:exported="false"
+            android:label="View Attendance"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
+            android:name=".EditSubmission"
+            android:exported="false"
+            android:label="View Assignment Submission"
+            android:parentActivityName=".ViewSubmissionFiltered" />
+        <activity
+            android:name=".ViewSubmissionFiltered"
+            android:exported="false"
+            android:label="View Assignment Submission"
+            android:parentActivityName=".ViewSubmission" />
+        <activity
+            android:name=".ViewSubmission"
+            android:exported="false"
+            android:label="View Assignment Submission"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
+            android:name=".AddAssignment"
+            android:exported="false"
+            android:label="Add Assignment"
+            android:parentActivityName=".ViewAssignmentFiltered" />
+        <activity
+            android:name=".ViewAssignmentFiltered"
+            android:exported="false"
+            android:label="View Assignment"
+            android:parentActivityName=".ViewAssignment" />
+        <activity
+            android:name=".ViewAssignment"
+            android:exported="false"
+            android:label="View Assignment"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
+            android:name=".EditNotes"
+            android:exported="false"
+            android:label="Edit Notes"
+            android:parentActivityName=".ViewNotesFiltered" />
+        <activity
+            android:name=".ViewNotesFiltered"
+            android:exported="false"
+            android:label="View Notes"
+            android:parentActivityName=".ViewNotes" />
+        <activity
+            android:name=".ViewNotes"
+            android:exported="false"
+            android:label="View Notes"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
+            android:name=".LecturerTimetable"
+            android:exported="false"
+            android:label="View Timetable"
+            android:parentActivityName=".LecturerPanel" />
+        <activity
             android:name=".ViewAnnouncementsFiltered"
             android:exported="false"
             android:label="View Announcements"
-            android:parentActivityName=".ViewAnnouncements"/>
+            android:parentActivityName=".ViewAnnouncements" />
         <activity
             android:name=".ViewAnnouncements"
             android:exported="false"

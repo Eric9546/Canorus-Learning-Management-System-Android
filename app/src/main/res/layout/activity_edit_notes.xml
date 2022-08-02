@@ -4,84 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewAnnouncementsFiltered">
+    tools:context=".EditNotes">
 
     <TextView
-        android:id="@+id/viewAnnouncementsFilteredText1"
+        android:id="@+id/editNotesText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Title"
+        android:text="File Title"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAnnouncementFilteredRecycler"
+        android:id="@+id/editNotesRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/editNotesSubmit" />
 
     <Button
-        android:id="@+id/viewAnnouncementsFilteredSubmit"
+        android:id="@+id/editNotesSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="15"
-        android:text="Add Announcement"
+        android:text="Add Notes"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/editNotesText3" />
 
     <TextView
-        android:id="@+id/viewAnnouncementsFilteredText2"
+        android:id="@+id/editNotesText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Details"
+        android:text="File Description"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/viewAnnouncementsFilteredTitle"
+        android:id="@+id/editNotesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/border"
         android:ems="8"
-        android:hint="Title"
+        android:hint="File Title"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText1" />
+        app:layout_constraintTop_toBottomOf="@+id/editNotesText1" />
 
     <EditText
-        android:id="@+id/viewAnnouncementsFilteredDetails"
+        android:id="@+id/editNotesDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/border"
         android:ems="8"
-        android:hint="Details"
+        android:hint="File Description"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editNotesText2" />
+
+    <Spinner
+        android:id="@+id/editNotesSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toEndOf="@+id/editNotesText3"
+        app:layout_constraintTop_toBottomOf="@+id/editNotesTitle" />
+
+    <TextView
+        android:id="@+id/editNotesText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Select File Format"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNotesTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

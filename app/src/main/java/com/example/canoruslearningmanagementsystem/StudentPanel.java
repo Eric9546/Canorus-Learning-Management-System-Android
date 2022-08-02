@@ -199,46 +199,4 @@ public class StudentPanel extends AppCompatActivity
 
     }
 
-    public void sentPush ()
-    {
-
-        RequestQueue mRequestQue = Volley.newRequestQueue(this);
-
-        // Create the json object to store the notification details //
-        JSONObject json = new JSONObject();
-        try
-        {
-            // Set the topic, title and body of the notification //
-            json.put("to", "/topics/" + "default");
-            JSONObject notificationObj = new JSONObject();
-            notificationObj.put("title", "New Notification!");
-            notificationObj.put("body", "Sent From Android ");
-
-            json.put("notification", notificationObj);
-
-            // Set the credentials to send the notification API //
-            String URL = "https://fcm.googleapis.com/fcm/send";
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL,
-                    json,
-                    response -> Log.d("MUR", "onResponse: " + response.toString()),
-                    error -> Log.d("MUR", "onError: " + error.networkResponse)
-            ) {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> header = new HashMap<>();
-                    header.put("content-type", "application/json");
-                    header.put("authorization", "key=AAAAnfSwSms:APA91bHzdrOgExVlwZM0Igsa-1wWKyzpL3b6QT1HDUMqpE2pPZRUfwbUwQz3EToo5PZYx_T3qrGZVWRJhJW3e8uIjTyatYtJhJ6753BwXJ-iBQLaT4NpqCG5Y8RLP5n4O_BnvtANTJas");
-                    return header;
-                }
-            };
-
-            mRequestQue.add(request);
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
 }

@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ViewAnnouncements extends AppCompatActivity implements AdapterView.OnItemSelectedListener
+public class ViewNotes extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
 
     // Set up the session variables //
@@ -44,18 +44,18 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
     {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_announcements);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_view_notes);
 
         // Get session details //
         mPreferences = getSharedPreferences(spFileName, MODE_PRIVATE);
         SharedPreferences.Editor spEditor = mPreferences.edit();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
 
-        Button mSubmit = findViewById(R.id.viewAnnouncementsSubmit);
-        Spinner mSpinner = findViewById(R.id.viewAnnouncementsSpinner);
+        Button mSubmit = findViewById(R.id.viewNotesSubmit);
+        Spinner mSpinner = findViewById(R.id.viewNotesSpinner);
         mSpinner.setOnItemSelectedListener(this);
 
         // Retrieve data from database //
@@ -64,6 +64,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
 
         stage1.addValueEventListener(new ValueEventListener()
         {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
@@ -78,7 +79,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
                         row2.add(item.child("subId").getValue().toString());
 
                         // Set up the drop down menu
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewAnnouncements.this, android.R.layout.simple_spinner_item, row1);
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ViewNotes.this, android.R.layout.simple_spinner_item, row1);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         mSpinner.setAdapter(adapter);
 
@@ -88,7 +89,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
                             public void onClick(View view)
                             {
 
-                                Intent intent = new Intent(ViewAnnouncements.this, ViewAnnouncementsFiltered.class);
+                                Intent intent = new Intent(ViewNotes.this, ViewNotesFiltered.class);
                                 intent.putExtra("subId", subId);
                                 startActivity(intent);
 
@@ -139,7 +140,7 @@ public class ViewAnnouncements extends AppCompatActivity implements AdapterView.
 
                 finish();
                 overridePendingTransition(0, 0);
-                startActivity (new Intent(getApplicationContext(), ViewAnnouncements.class));
+                startActivity (new Intent(getApplicationContext(), ViewNotes.class));
                 overridePendingTransition(0, 0);
 
                 return true;

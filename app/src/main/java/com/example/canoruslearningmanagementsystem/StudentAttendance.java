@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,7 +34,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class StudentAttendance extends AppCompatActivity implements TwoRowAdapter.ItemClickListener
@@ -173,9 +171,9 @@ public class StudentAttendance extends AppCompatActivity implements TwoRowAdapte
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_student_attendance, null);
 
-        pin = popupView.findViewById(R.id.popup_student_pin);
-        submitPin = popupView.findViewById(R.id.popup_student_submit_pin);
-        submitQR = popupView.findViewById(R.id.popup_student_qr);
+        pin = popupView.findViewById(R.id.popup_edit_submission_grade);
+        submitPin = popupView.findViewById(R.id.popup_edit_submission_view);
+        submitQR = popupView.findViewById(R.id.popup_edit_submission_delete);
 
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;

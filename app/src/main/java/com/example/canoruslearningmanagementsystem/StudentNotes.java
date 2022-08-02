@@ -53,7 +53,6 @@ public class StudentNotes extends AppCompatActivity implements TwoRowAdapter.Ite
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_notes);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get session details //
@@ -130,7 +129,6 @@ public class StudentNotes extends AppCompatActivity implements TwoRowAdapter.Ite
         request.setTitle(row3.get(position));
         request.setDescription(row3.get(position));
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-
 
         Long reference = downloadManager.enqueue(request);
 
