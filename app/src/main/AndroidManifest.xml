@@ -15,10 +15,170 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".EditClass"
+            android:exported="false"
+            android:label="View Classes"
+            android:parentActivityName=".ViewClassesFiltered"/>
+        <activity
+            android:name=".ViewClassesFiltered"
+            android:exported="false"
+            android:label="View Classes"
+            android:parentActivityName=".ViewClasses" />
+        <activity
+            android:name=".ViewClasses"
+            android:exported="false"
+            android:label="View Classes"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditResultStudent"
+            android:exported="false"
+            android:label="Edit Results"
+            android:parentActivityName=".EditResult" />
+        <activity
+            android:name=".EditResult"
+            android:exported="false"
+            android:label="Edit Results"
+            android:parentActivityName=".ViewResult" />
+        <activity
+            android:name=".ViewResult"
+            android:exported="false"
+            android:label="View Result"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditPayment"
+            android:exported="false"
+            android:label="Edit Payment"
+            android:parentActivityName=".ViewPayment" />
+        <activity
+            android:name=".ViewPayment"
+            android:exported="false"
+            android:label="View Payment"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditEnrolmentStudent"
+            android:exported="false"
+            android:label="Subject Add/Drop"
+            android:parentActivityName=".ViewEnrolment" />
+        <activity
+            android:name=".EditEnrolment"
+            android:exported="false"
+            android:label="Edit Enrolment"
+            android:parentActivityName=".ViewEnrolment" />
+        <activity
+            android:name=".ViewEnrolment"
+            android:exported="false"
+            android:label="View Enrolment"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditStudent"
+            android:exported="false"
+            android:label="Edit Student"
+            android:parentActivityName=".ViewStudentFiltered" />
+        <activity
+            android:name=".ViewStudentFiltered"
+            android:exported="false"
+            android:label="View Student"
+            android:parentActivityName=".ViewStudent" />
+        <activity
+            android:name=".ViewStudent"
+            android:exported="false"
+            android:label="View Student"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".AddStudent"
+            android:exported="false"
+            android:label="Add Student"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditSubject"
+            android:exported="false"
+            android:label="Edit Subject"
+            android:parentActivityName=".ViewSubjectFiltered" />
+        <activity
+            android:name=".ViewSubjectFiltered"
+            android:exported="false"
+            android:label="View Subject"
+            android:parentActivityName=".ViewSubject" />
+        <activity
+            android:name=".ViewSubject"
+            android:exported="false"
+            android:label="View Subject"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".AddSubject"
+            android:exported="false"
+            android:label="Add Subject"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditStaff"
+            android:exported="false"
+            android:label="Edit Staff"
+            android:parentActivityName=".ViewStaffFiltered" />
+        <activity
+            android:name=".ViewStaffFiltered"
+            android:exported="false"
+            android:label="View Staff"
+            android:parentActivityName=".ViewStaff" />
+        <activity
+            android:name=".ViewStaff"
+            android:exported="false"
+            android:label="View Staff"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".AddStaff"
+            android:exported="false"
+            android:label="Add Staff"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".EditLecturer"
+            android:exported="false"
+            android:label="View Lecturer"
+            android:parentActivityName=".ViewLecturer" />
+        <activity
+            android:name=".ViewLecturer"
+            android:exported="false"
+            android:label="View Lecturer"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".AddLecturer"
+            android:exported="false"
+            android:label="Add Lecturer"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".ViewLecturerTimetableFiltered"
+            android:exported="false"
+            android:label="View Lecturer Timetable"
+            android:parentActivityName=".ViewLecturerTimetable" />
+        <activity
+            android:name=".ViewLecturerTimetable"
+            android:exported="false"
+            android:label="View Lecturer Timetable"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".ViewLogFiltered"
+            android:exported="false"
+            android:label="View Logs"
+            android:parentActivityName=".ViewLog" />
+        <activity
+            android:name=".ViewLog"
+            android:exported="false"
+            android:label="View Log"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".RemoveProgramSession"
+            android:exported="false"
+            android:label="Remove Program/Session"
+            android:parentActivityName=".AdminPanel" />
+        <activity
+            android:name=".AddProgramSession"
+            android:exported="false"
+            android:label="Add Program/Session"
+            android:parentActivityName=".AdminPanel" />
+        <activity
             android:name=".EditAttendanceList"
             android:exported="false"
             android:label="Edit Attendance"
-            android:parentActivityName=".EditAttendance"/>
+            android:parentActivityName=".EditAttendance" />
         <activity
             android:name=".EditAttendance"
             android:exported="false"

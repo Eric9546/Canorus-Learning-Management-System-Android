@@ -6,5 +6,5 @@
         android:title="Add Student" />
     <item
         android:id="@+id/view_student"
-        android:title="View Student" />
+        android:title="Edit/Remove Student" />
 </menu>

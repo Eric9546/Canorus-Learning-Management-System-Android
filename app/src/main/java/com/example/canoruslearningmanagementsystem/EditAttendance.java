@@ -10,8 +10,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -168,7 +166,7 @@ public class EditAttendance extends AppCompatActivity implements TwoRowAdapter.I
                 }
 
                 // set up the RecyclerView
-                RecyclerView recyclerView = findViewById(R.id.editAttendanceRecycler);
+                RecyclerView recyclerView = findViewById(R.id.viewLogFilteredRecycler);
                 recyclerView.setLayoutManager(new LinearLayoutManager(EditAttendance.this));
                 adapter = new TwoRowAdapter(EditAttendance.this, row1, row2);
                 adapter.setClickListener(EditAttendance.this);

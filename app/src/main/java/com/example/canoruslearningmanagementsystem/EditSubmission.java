@@ -92,8 +92,8 @@ public class EditSubmission extends AppCompatActivity implements ThreeRowAdapter
         String spSession = mPreferences.getString(SESSION_KEY, "");
         dbId = spId;
 
-        mStuId = findViewById(R.id.editSubmissionId);
-        mSearch = findViewById(R.id.editSubmissionSubmit);
+        mStuId = findViewById(R.id.viewLecturerName);
+        mSearch = findViewById(R.id.viewLecturerSubmit);
         mHide = findViewById(R.id.editSubmissionFilter);
 
         Bundle extras = getIntent().getExtras();
@@ -138,7 +138,7 @@ public class EditSubmission extends AppCompatActivity implements ThreeRowAdapter
                 }
 
                 // set up the RecyclerView
-                RecyclerView recyclerView = findViewById(R.id.editSubmissionRecycler);
+                RecyclerView recyclerView = findViewById(R.id.viewLecturerRecycler);
                 recyclerView.setLayoutManager(new LinearLayoutManager(EditSubmission.this));
                 adapter = new ThreeRowAdapter (EditSubmission.this, row1, row2, row3);
                 adapter.setClickListener(EditSubmission.this);

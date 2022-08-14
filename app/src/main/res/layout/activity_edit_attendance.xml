@@ -7,7 +7,7 @@
     tools:context=".EditAttendance">
 
     <TextView
-        android:id="@+id/editAttendanceText1"
+        android:id="@+id/viewLogFilteredText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/editAttendanceRecycler"
+        android:id="@+id/viewLogFilteredRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
         android:text="Add Attendance"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAttendanceText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editAttendanceStart" />
 
     <TextView
         android:id="@+id/editAttendanceText2"
@@ -54,7 +54,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAttendanceText1" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLogFilteredText1" />
 
     <Button
         android:id="@+id/editAttendanceDate"
@@ -67,7 +67,7 @@
         android:text="01-01-2020"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/editAttendanceText2"
-        app:layout_constraintTop_toBottomOf="@+id/editAttendanceText1" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLogFilteredText1" />
 
     <TextView
         android:id="@+id/editAttendanceText3"
@@ -87,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/editAttendanceText3"
         app:layout_constraintTop_toBottomOf="@+id/editAttendanceDate"
         android:background="@drawable/border"/>
@@ -109,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/editAttendanceText4"
         app:layout_constraintTop_toBottomOf="@+id/editAttendanceDate"
         android:background="@drawable/border"/>

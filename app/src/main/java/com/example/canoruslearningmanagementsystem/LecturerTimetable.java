@@ -179,7 +179,9 @@ public class LecturerTimetable extends AppCompatActivity implements TwoRowAdapte
     @Override
     public void onItemClick(View view, int position)
     {
+
         Toast.makeText(LecturerTimetable.this, "Subject ID | Section | Room | Type", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

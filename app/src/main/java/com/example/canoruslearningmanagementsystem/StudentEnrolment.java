@@ -82,7 +82,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
 
         stuId = spId;
 
-        mSubmit = findViewById(R.id.viewAnnouncementsFilteredSubmit);
+        mSubmit = findViewById(R.id.studentEnrolmentSubmit);
         Spinner mSpinner = findViewById(R.id.studentEnrolmentDropdown);
         mSpinner.setOnItemSelectedListener(this);
 
@@ -221,7 +221,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
 
                                                                                 finish();
                                                                                 overridePendingTransition(0, 0);
-                                                                                startActivity (new Intent(getApplicationContext(), StudentPanel.class));
+                                                                                startActivity (new Intent(getApplicationContext(), StudentEnrolment.class));
                                                                                 overridePendingTransition(0, 0);
 
                                                                             }
@@ -360,7 +360,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
 
                                                                                                 finish();
                                                                                                 overridePendingTransition(0, 0);
-                                                                                                startActivity (new Intent(getApplicationContext(), StudentPanel.class));
+                                                                                                startActivity (new Intent(getApplicationContext(), StudentEnrolment.class));
                                                                                                 overridePendingTransition(0, 0);
 
                                                                                             }
@@ -476,7 +476,7 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
                         }
 
                         // set up the RecyclerView
-                        RecyclerView recyclerView = findViewById(R.id.viewAnnouncementFilteredRecycler);
+                        RecyclerView recyclerView = findViewById(R.id.studentEnrolmentRecycler);
                         recyclerView.setLayoutManager(new LinearLayoutManager(StudentEnrolment.this));
                         adapter = new TwoRowAdapter (StudentEnrolment.this, row2, row3);
                         adapter.setClickListener(StudentEnrolment.this);
@@ -501,8 +501,6 @@ public class StudentEnrolment extends AppCompatActivity implements TwoRowAdapter
             }
 
         });
-
-
 
     }
 

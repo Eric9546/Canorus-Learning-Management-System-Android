@@ -32,6 +32,14 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
+        // Get session details //
+        mPreferences = getSharedPreferences(spFileName, MODE_PRIVATE);
+        SharedPreferences.Editor spEditor = mPreferences.edit();
+
+        String spId = mPreferences.getString(ID_KEY, "");
+        String spSession = mPreferences.getString(SESSION_KEY, "");
+        String spAccessLevel = mPreferences.getString(ACCESS_LEVEL_KEY, "");
+
         mUser = findViewById(R.id.userImg);
         mLecturer = findViewById(R.id.lecturerImg);
         mSubject = findViewById(R.id.subjectImg);
@@ -49,10 +57,23 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
-                popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.staff_popup);
-                popup.show();
+                if (spAccessLevel.equalsIgnoreCase("Admin"))
+                {
+
+                    PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                    popup.setOnMenuItemClickListener(AdminPanel.this);
+                    popup.inflate(R.menu.staff_popup);
+                    popup.show();
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
+
 
             }
 
@@ -64,10 +85,22 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
-                popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.lecturer_popup);
-                popup.show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Program Officer"))
+                {
+
+                    PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                    popup.setOnMenuItemClickListener(AdminPanel.this);
+                    popup.inflate(R.menu.lecturer_popup);
+                    popup.show();
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -78,10 +111,22 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
-                popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.subject_popup);
-                popup.show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Program Officer"))
+                {
+
+                    PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                    popup.setOnMenuItemClickListener(AdminPanel.this);
+                    popup.inflate(R.menu.subject_popup);
+                    popup.show();
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -92,7 +137,19 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                Toast.makeText(AdminPanel.this, "RESULT", Toast.LENGTH_SHORT).show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Exam Unit"))
+                {
+
+                    startActivity (new Intent(getApplicationContext(), ViewResult.class));
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -103,7 +160,19 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                Toast.makeText(AdminPanel.this, "PAYMENT", Toast.LENGTH_SHORT).show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Finance"))
+                {
+
+                    startActivity (new Intent(getApplicationContext(), ViewPayment.class));
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -114,10 +183,22 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
-                popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.enrolment_popup);
-                popup.show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Program Officer"))
+                {
+
+                    PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                    popup.setOnMenuItemClickListener(AdminPanel.this);
+                    popup.inflate(R.menu.enrolment_popup);
+                    popup.show();
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -128,10 +209,22 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                PopupMenu popup = new PopupMenu(AdminPanel.this, view);
-                popup.setOnMenuItemClickListener(AdminPanel.this);
-                popup.inflate(R.menu.student_popup);
-                popup.show();
+                if (spAccessLevel.equalsIgnoreCase("Admin") || spAccessLevel.equalsIgnoreCase("Registry"))
+                {
+
+                    PopupMenu popup = new PopupMenu(AdminPanel.this, view);
+                    popup.setOnMenuItemClickListener(AdminPanel.this);
+                    popup.inflate(R.menu.student_popup);
+                    popup.show();
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -142,7 +235,19 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onClick(View view)
             {
 
-                Toast.makeText(AdminPanel.this, "LOG", Toast.LENGTH_SHORT).show();
+                if (spAccessLevel.equalsIgnoreCase("Admin"))
+                {
+
+                    startActivity (new Intent(getApplicationContext(), ViewLog.class));
+
+                }
+
+                else
+                {
+
+                    Toast.makeText(AdminPanel.this, "You Do Not Have Access!", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
@@ -157,55 +262,57 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
         {
 
             case R.id.add_staff:
-                Toast.makeText(AdminPanel.this, "add_user", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), AddStaff.class));
                 return true;
 
             case R.id.view_staff:
-                Toast.makeText(AdminPanel.this, "view_user", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewStaff.class));
                 return true;
 
             case R.id.add_lecturer:
-                Toast.makeText(AdminPanel.this, "add_lecturer", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), AddLecturer.class));
                 return true;
 
             case R.id.view_lecturer:
-                Toast.makeText(AdminPanel.this, "view_lecturer", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AdminPanel.this, ViewLecturer.class);
+                intent.putExtra("search", "");
+                startActivity(intent);
                 return true;
 
             case R.id.view_lecturer_timetable:
-                Toast.makeText(AdminPanel.this, "view_lecturer_timetable", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewLecturerTimetable.class));
                 return true;
 
             case R.id.add_subject:
-                Toast.makeText(AdminPanel.this, "add_subject", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), AddSubject.class));
                 return true;
 
             case R.id.view_subject:
-                Toast.makeText(AdminPanel.this, "view_subject", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewSubject.class));
                 return true;
 
             case R.id.view_classes:
-                Toast.makeText(AdminPanel.this, "view_classes", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewClasses.class));
                 return true;
 
             case R.id.view_enrolment:
-                Toast.makeText(AdminPanel.this, "view_enrolment", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewEnrolment.class));
                 return true;
 
             case R.id.add_program_session:
-                Toast.makeText(AdminPanel.this, "add_program_session", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), AddProgramSession.class));
                 return true;
 
             case R.id.remove_program_session:
-                Toast.makeText(AdminPanel.this, "remove_program_session", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), RemoveProgramSession.class));
                 return true;
 
             case R.id.add_student:
-                Toast.makeText(AdminPanel.this, "add_student", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), AddStudent.class));
                 return true;
 
             case R.id.view_student:
-                Toast.makeText(AdminPanel.this, "view_student", Toast.LENGTH_SHORT).show();
+                startActivity (new Intent(getApplicationContext(), ViewStudent.class));
                 return true;
 
             default:

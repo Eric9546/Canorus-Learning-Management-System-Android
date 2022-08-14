@@ -8,7 +8,7 @@
     tools:context=".StudentEnrolment">
 
   <TextView
-      android:id="@+id/viewAnnouncementsFilteredText1"
+      android:id="@+id/studentEnrolmentText1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="8dp"
@@ -21,21 +21,21 @@
       app:layout_constraintTop_toTopOf="parent" />
 
   <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/viewAnnouncementFilteredRecycler"
+      android:id="@+id/studentEnrolmentRecycler"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_marginStart="8dp"
-      android:layout_marginTop="155dp"
+      android:layout_marginTop="200dp"
       android:layout_marginEnd="8dp"
       android:layout_marginBottom="16dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredSubmit" />
+      app:layout_constraintTop_toBottomOf="@+id/studentEnrolmentSubmit" />
 
   <Button
-      android:id="@+id/viewAnnouncementsFilteredSubmit"
+      android:id="@+id/studentEnrolmentSubmit"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="8dp"
@@ -52,8 +52,9 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="8dp"
       android:layout_marginTop="16dp"
+      android:minHeight="48dp"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/viewAnnouncementsFilteredText1"
+      app:layout_constraintTop_toBottomOf="@+id/studentEnrolmentText1"
       android:background="@drawable/border"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

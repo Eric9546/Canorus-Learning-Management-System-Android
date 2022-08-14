@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,8 +53,8 @@ public class StudentResultChoose extends AppCompatActivity implements AdapterVie
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
 
-        Button mSubmit = findViewById(R.id.studentChooseResultSubmit);
-        Spinner mSpinner = findViewById(R.id.studentResultChooseSpinner);
+        Button mSubmit = findViewById(R.id.removeProgramSessionSubmit2);
+        Spinner mSpinner = findViewById(R.id.removeProgramSessionSpinner2);
         mSpinner.setOnItemSelectedListener(this);
 
         // Retrieve data from database //

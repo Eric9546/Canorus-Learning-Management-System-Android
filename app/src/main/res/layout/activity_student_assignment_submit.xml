@@ -160,6 +160,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/border"
         android:visibility="invisible"
+        android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/studentAssignmentSubmitText9"
         app:layout_constraintTop_toBottomOf="@+id/studentAssignmentSubmitUpload" />
 

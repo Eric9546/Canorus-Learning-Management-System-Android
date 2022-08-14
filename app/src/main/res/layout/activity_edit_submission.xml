@@ -7,7 +7,7 @@
     tools:context=".EditSubmission">
 
     <TextView
-        android:id="@+id/editSubmissionText1"
+        android:id="@+id/viewLecturerText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/editSubmissionRecycler"
+        android:id="@+id/viewLecturerRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -30,10 +30,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSubmissionSubmit" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLecturerSubmit" />
 
     <Button
-        android:id="@+id/editSubmissionSubmit"
+        android:id="@+id/viewLecturerSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -42,10 +42,10 @@
         android:text="Search"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSubmissionId" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLecturerName" />
 
     <EditText
-        android:id="@+id/editSubmissionId"
+        android:id="@+id/viewLecturerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -56,7 +56,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSubmissionText1" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLecturerText1" />
 
     <Button
         android:id="@+id/editSubmissionFilter"
@@ -68,6 +68,6 @@
         android:text="Hide Graded Assignments"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSubmissionId" />
+        app:layout_constraintTop_toBottomOf="@+id/viewLecturerName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
