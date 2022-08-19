@@ -273,6 +273,11 @@ public class ViewStaffFiltered extends AppCompatActivity implements ThreeRowAdap
 
                 stage1.removeValue();
 
+                FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+                DatabaseReference stage2 = database2.getReference("Lecturer/" + id);
+
+                stage2.removeValue();
+
                 // Log the removed staff //
                 logRemoveStaff(finalId, id, role);
 

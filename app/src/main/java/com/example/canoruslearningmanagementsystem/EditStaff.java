@@ -188,6 +188,13 @@ public class EditStaff extends AppCompatActivity
                         stage2.child("ic").setValue(ic);
                         stage2.child("address").setValue(address);
 
+                        FirebaseDatabase database3 = FirebaseDatabase.getInstance();
+                        DatabaseReference stage3 = database3.getReference("Lecturer/" + id.toUpperCase());
+
+                        stage3.child("name").setValue(name);
+                        stage3.child("email").setValue(email);
+                        stage3.child("telno").setValue(phone);
+
                         // Log the audit changes to database //
                         logEditStaff(spId, id, mSpinner.getSelectedItem().toString());
 

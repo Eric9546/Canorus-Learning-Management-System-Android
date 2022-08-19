@@ -187,6 +187,14 @@ public class AddStaff extends AppCompatActivity
                             stage.child("program").setValue("N/A");
                             stage.child("session").setValue("N/A");
 
+                            FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+                            DatabaseReference stage2 = database2.getReference("Lecturer/" + id.toUpperCase());
+
+                            stage2.child("lecId").setValue(id.toUpperCase());
+                            stage2.child("name").setValue(name);
+                            stage2.child("email").setValue(email);
+                            stage2.child("telno").setValue(phone);
+
                             // Log the details //
                             logAddStaff(spId, id.toUpperCase(), mSpinner.getSelectedItem().toString());
 

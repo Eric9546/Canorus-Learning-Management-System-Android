@@ -269,10 +269,6 @@ public class AdminPanel extends AppCompatActivity implements PopupMenu.OnMenuIte
                 startActivity (new Intent(getApplicationContext(), ViewStaff.class));
                 return true;
 
-            case R.id.add_lecturer:
-                startActivity (new Intent(getApplicationContext(), AddLecturer.class));
-                return true;
-
             case R.id.view_lecturer:
                 Intent intent = new Intent(AdminPanel.this, ViewLecturer.class);
                 intent.putExtra("search", "");

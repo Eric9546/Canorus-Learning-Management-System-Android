@@ -182,6 +182,19 @@ public class EditAttendance extends AppCompatActivity implements TwoRowAdapter.I
                         String date = dateButton.getText().toString();
                         String timeStart = mStart.getSelectedItem().toString();
                         String timeEnd = mEnd.getSelectedItem().toString();
+
+                        // Validate the class time //
+                        int timeStartIndex = timeStartIndex(timeStart);
+                        int timeEndIndex = timeEndIndex(timeEnd);
+
+                        if (timeEndIndex <= timeStartIndex)
+                        {
+
+                            Toast.makeText(EditAttendance.this, "End Time Cannot Be Earlier Or Equal To Start Time!", Toast.LENGTH_SHORT).show();
+                            return;
+
+                        }
+
                         String classDateTime = date + "-" + timeStart + "-" + timeEnd;
 
                         // Query to check if content name already exists //
@@ -624,6 +637,66 @@ public class EditAttendance extends AppCompatActivity implements TwoRowAdapter.I
     {
 
         mDatePickerDialog.show();
+
+    }
+
+    public int timeStartIndex (String timeStart) {
+
+        int index = 0;
+
+        if (timeStart.equalsIgnoreCase("8:00am")) {
+            index = 8;
+        } else if (timeStart.equalsIgnoreCase("9:00am")) {
+            index = 9;
+        } else if (timeStart.equalsIgnoreCase("10:00am")) {
+            index = 10;
+        } else if (timeStart.equalsIgnoreCase("11:00am")) {
+            index = 11;
+        } else if (timeStart.equalsIgnoreCase("12:00pm")) {
+            index = 12;
+        } else if (timeStart.equalsIgnoreCase("1:00pm")) {
+            index = 13;
+        } else if (timeStart.equalsIgnoreCase("2:00pm")) {
+            index = 14;
+        } else if (timeStart.equalsIgnoreCase("3:00pm")) {
+            index = 15;
+        } else if (timeStart.equalsIgnoreCase("4:00pm")) {
+            index = 16;
+        } else if (timeStart.equalsIgnoreCase("5:00pm")) {
+            index = 17;
+        }
+
+        return index;
+
+    }
+
+    public int timeEndIndex (String timeEnd) {
+
+        int index = 0;
+
+        if (timeEnd.equalsIgnoreCase("9:00am")) {
+            index = 9;
+        } else if (timeEnd.equalsIgnoreCase("10:00am")) {
+            index = 10;
+        } else if (timeEnd.equalsIgnoreCase("11:00am")) {
+            index = 11;
+        } else if (timeEnd.equalsIgnoreCase("12:00pm")) {
+            index = 12;
+        } else if (timeEnd.equalsIgnoreCase("1:00pm")) {
+            index = 13;
+        } else if (timeEnd.equalsIgnoreCase("2:00pm")) {
+            index = 14;
+        } else if (timeEnd.equalsIgnoreCase("3:00pm")) {
+            index = 15;
+        } else if (timeEnd.equalsIgnoreCase("4:00pm")) {
+            index = 16;
+        } else if (timeEnd.equalsIgnoreCase("5:00pm")) {
+            index = 17;
+        } else if (timeEnd.equalsIgnoreCase("6:00pm")) {
+            index = 18;
+        }
+
+        return index;
 
     }
 

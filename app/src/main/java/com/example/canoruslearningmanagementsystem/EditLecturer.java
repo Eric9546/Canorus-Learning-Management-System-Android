@@ -136,6 +136,14 @@ public class EditLecturer extends AppCompatActivity
                         stage2.child("email").setValue(email);
                         stage2.child("telno").setValue(phone);
 
+                        // Update the details in the database //
+                        FirebaseDatabase database3 = FirebaseDatabase.getInstance();
+                        DatabaseReference stage3 = database3.getReference("Registration/" + lecId);
+
+                        stage3.child("name").setValue(name);
+                        stage3.child("email").setValue(email);
+                        stage3.child("telno").setValue(phone);
+
                         // Log the audit changes to database //
                         logEditLecturer(spId, lecId);
 

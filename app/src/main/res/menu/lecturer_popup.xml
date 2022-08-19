@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/add_lecturer"
-        android:title="Add Lecturer" />
-
-    <item android:id="@+id/view_lecturer"
-        android:title="Edit/Remove Lecturer" />
+    <item
+        android:id="@+id/view_lecturer"
+        android:title="Edit Lecturer" />
     <item
         android:id="@+id/view_lecturer_timetable"
         android:title="View Lecturer Timetable" />

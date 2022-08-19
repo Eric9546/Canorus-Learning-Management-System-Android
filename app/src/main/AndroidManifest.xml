@@ -132,7 +132,7 @@
         <activity
             android:name=".EditLecturer"
             android:exported="false"
-            android:label="View Lecturer"
+            android:label="Edit Lecturer"
             android:parentActivityName=".ViewLecturer" />
         <activity
             android:name=".ViewLecturer"
