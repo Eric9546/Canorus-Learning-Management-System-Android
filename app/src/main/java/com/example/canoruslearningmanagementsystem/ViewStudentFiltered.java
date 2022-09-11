@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,6 +32,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,6 +70,9 @@ public class ViewStudentFiltered extends AppCompatActivity implements ThreeRowAd
     ArrayList<String> row2 = new ArrayList<>();
     ArrayList<String> row3 = new ArrayList<>();
     ArrayList<String> row4 = new ArrayList<>();
+    ArrayList<String> row5 = new ArrayList<>();
+
+    StorageReference mStorageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -119,6 +127,7 @@ public class ViewStudentFiltered extends AppCompatActivity implements ThreeRowAd
                             row2.add(item.child("password").getValue().toString() + " | " + item.child("email").getValue().toString() + " | " + item.child("telno").getValue().toString());
                             row3.add(item.child("ic").getValue().toString() + " | " + item.child("address").getValue().toString());
                             row4.add(item.child("id").getValue().toString());
+                            row5.add(item.child("filename").getValue().toString());
 
                         }
 
@@ -217,14 +226,16 @@ public class ViewStudentFiltered extends AppCompatActivity implements ThreeRowAd
         Toast.makeText(ViewStudentFiltered.this, "Password | Email | Phone\nIC/Password | Address", Toast.LENGTH_SHORT).show();
 
         String id = row4.get(position);
+        String filename = row5.get(position);
 
-        Button mEdit, mRemove;
+        Button mView, mEdit, mRemove;
 
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_view_student_filtered, null);
 
+        mView = popupView.findViewById(R.id.popup_view_student_filtered_view);
         mEdit = popupView.findViewById(R.id.popup_view_student_filtered_edit);
         mRemove = popupView.findViewById(R.id.popup_view_student_filtered_remove);
 
@@ -250,6 +261,32 @@ public class ViewStudentFiltered extends AppCompatActivity implements ThreeRowAd
 
         });
 
+        mView.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+
+                // Download the payment file  //
+                String fileLink = "https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/" + filename + "?alt=media&";
+
+                Uri urifile = Uri.parse(fileLink);
+
+                DownloadManager downloadManager = (DownloadManager) ViewStudentFiltered.this.getSystemService(Context.DOWNLOAD_SERVICE);
+
+                DownloadManager.Request request = new DownloadManager.Request(urifile);
+
+                request.setTitle(filename);
+                request.setDescription(filename);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+                Long reference = downloadManager.enqueue(request);
+
+            }
+
+        });
+
         mEdit.setOnClickListener(new View.OnClickListener()
         {
 
@@ -271,6 +308,10 @@ public class ViewStudentFiltered extends AppCompatActivity implements ThreeRowAd
             @Override
             public void onClick(View view)
             {
+
+                // Remove the file //
+                mStorageReference = FirebaseStorage.getInstance().getReference(filename);
+                mStorageReference.delete();
 
                 // Query to delete the record from the database table //
                 FirebaseDatabase database = FirebaseDatabase.getInstance();

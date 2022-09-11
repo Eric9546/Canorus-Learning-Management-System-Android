@@ -1,10 +1,12 @@
 package com.example.canoruslearningmanagementsystem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -17,8 +19,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +31,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +54,8 @@ import javax.mail.internet.MimeMessage;
 public class AddStudent extends AppCompatActivity
 {
 
+    private static final int FILE_CODE = 69;
+
     FirebaseFirestore log = FirebaseFirestore.getInstance();
 
     // Set up the session variables //
@@ -61,10 +71,211 @@ public class AddStudent extends AppCompatActivity
     ArrayList<String> row2 = new ArrayList<>();
 
     String exit = "false";
+    String newfilename = "";
+
+    String name = "";
+    String email = "";
+    String phone = "";
+    String ic = "";
+    String address = "";
+    String program = "";
+    String session = "";
+    String stuId = "";
+    String password = "";
+    String finalId = "";
 
     EditText mName, mEmail, mPhone, mIc, mAddress;
     Spinner mProgram, mSession;
     Button mSubmit;
+
+    StorageReference mStorageReference;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == FILE_CODE)
+        {
+
+            UploadTask uploadTask = mStorageReference.putFile(data.getData());
+
+            // Create file retrieval task //
+            Task<Uri> task = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+            {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                {
+
+                    if (!task.isSuccessful())
+                    {
+
+                        Toast.makeText(AddStudent.this, "Process Failed", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    return mStorageReference.getDownloadUrl();
+
+                }
+
+            }).addOnCompleteListener(new OnCompleteListener<Uri>()
+            {
+
+                @Override
+                public void onComplete(@NonNull Task<Uri> task)
+                {
+
+                    if (task.isSuccessful())
+                    {
+
+                        // Query to check if user ID already exists //
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference stage = database.getReference("Registration/" + stuId.toUpperCase());
+
+                        stage.addValueEventListener(new ValueEventListener()
+                        {
+
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                            {
+
+                                if (snapshot.getValue() == null)
+                                {
+
+                                    stage.child("id").setValue(stuId);
+                                    stage.child("password").setValue(password);
+                                    stage.child("access_level").setValue("Student");
+                                    stage.child("name").setValue(name);
+                                    stage.child("email").setValue(email);
+                                    stage.child("telno").setValue(phone);
+                                    stage.child("ic").setValue(ic);
+                                    stage.child("address").setValue(address);
+                                    stage.child("program").setValue(program);
+                                    stage.child("session").setValue(session);
+                                    stage.child("filename").setValue(newfilename);
+
+                                    // Send email to the student //
+                                    String stringSenderEmail = "postmaster@sandbox9a189234a5e64ef0a823c2cf47daaeba.mailgun.org";
+                                    String stringReceiverEmail = email;
+                                    String stringPasswordSenderEmail = "87d79c294275468fec083d7839d383d4-1b237f8b-d24d52dc";
+
+                                    String stringHost = "smtp.mailgun.org";
+
+                                    Properties properties = System.getProperties();
+
+                                    properties.put("mail.smtp.host", stringHost);
+                                    properties.put("mail.smtp.port", "587");
+                                    properties.put("mail.smtp.tls.enable", "true");
+                                    properties.put("mail.smtp.auth", "true");
+                                    properties.put("mail.smtp.from", "donotreply@canorus.epizy.com");
+
+                                    javax.mail.Session session1 = Session.getInstance(properties, new Authenticator()
+                                    {
+                                        @Override
+                                        protected PasswordAuthentication getPasswordAuthentication()
+                                        {
+                                            return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
+                                        }
+                                    });
+
+                                    MimeMessage mimeMessage = new MimeMessage(session1);
+                                    try
+                                    {
+                                        mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
+
+                                        mimeMessage.setSubject("Student Registration Successful");
+                                        mimeMessage.setText("This Is To Inform You That The You Have Been Successfully Registered On The Canorus Learning Management System.\n" +
+                                                "Student Login ID: " + stuId + "\n" +
+                                                "Student Login Password: " + password + "\n" +
+                                                "Student Name: " + name + "\n" +
+                                                "Student Program: " + program + "\n" +
+                                                "Student Session: " + session + "\n" +
+                                                "You May Access Your Student Account on https://canorus.epizy.com/login.php or the Canorus Android Mobile Application");
+
+                                        Thread thread = new Thread(new Runnable()
+                                        {
+                                            @Override
+                                            public void run()
+                                            {
+
+                                                try
+                                                {
+                                                    Transport.send(mimeMessage);
+                                                }
+
+                                                catch (MessagingException e)
+                                                {
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+                                        });
+
+                                        thread.start();
+
+                                    }
+
+                                    catch (MessagingException e)
+                                    {
+                                        e.printStackTrace();
+                                    }
+
+                                    // Log the details //
+                                    logAddStudent(finalId, stuId, program, session);
+
+                                    exit = "true";
+
+                                    SystemClock.sleep(3000);
+
+                                    finish();
+                                    overridePendingTransition(0, 0);
+                                    startActivity (new Intent(getApplicationContext(), AddStudent.class));
+                                    overridePendingTransition(0, 0);
+
+                                    Toast.makeText(AddStudent.this, "Student Added!", Toast.LENGTH_SHORT).show();
+
+
+                                }
+
+                                else
+                                {
+
+                                    if (exit.equalsIgnoreCase("true"))
+                                    {
+
+
+
+                                    }
+
+                                    else
+                                    {
+
+                                        Toast.makeText(AddStudent.this, "Student ID Already Exists!", Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error)
+                            {
+
+                            }
+
+                        });
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,6 +291,7 @@ public class AddStudent extends AppCompatActivity
 
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
+        finalId = spId;
 
         mName = findViewById(R.id.addStudentName);
         mEmail = findViewById(R.id.addStudentEmail);
@@ -161,13 +373,13 @@ public class AddStudent extends AppCompatActivity
             public void onClick(View view)
             {
 
-                String name = mName.getText().toString();
-                String email = mEmail.getText().toString();
-                String phone = mPhone.getText().toString();
-                String ic = mIc.getText().toString();
-                String address = mAddress.getText().toString();
-                String program = mProgram.getSelectedItem().toString();
-                String session = mSession.getSelectedItem().toString();
+                name = mName.getText().toString();
+                email = mEmail.getText().toString();
+                phone = mPhone.getText().toString();
+                ic = mIc.getText().toString();
+                address = mAddress.getText().toString();
+                program = mProgram.getSelectedItem().toString();
+                session = mSession.getSelectedItem().toString();
 
                 if (TextUtils.isEmpty(name))
                 {
@@ -214,145 +426,18 @@ public class AddStudent extends AppCompatActivity
                 SimpleDateFormat logTime = new SimpleDateFormat("mmss");
                 Date date = new Date ();
 
-                String stuId = "S" + logDate.format(date) + logTime.format(date);
-                String password = "S" + ic;
+                stuId = "S" + logDate.format(date) + logTime.format(date);
+                password = "S" + ic;
 
-                // Query to check if user ID already exists //
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference stage = database.getReference("Registration/" + stuId.toUpperCase());
+                // Create link to firebase storage for payment file //
+                newfilename = "STUDENT_" + stuId + "_" + program + "_" + session + ".pdf";
+                mStorageReference = FirebaseStorage.getInstance().getReference(newfilename);
 
-                stage.addValueEventListener(new ValueEventListener()
-                {
-
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot)
-                    {
-
-                        if (snapshot.getValue() == null)
-                        {
-
-                            stage.child("id").setValue(stuId);
-                            stage.child("password").setValue(password);
-                            stage.child("access_level").setValue("Student");
-                            stage.child("name").setValue(name);
-                            stage.child("email").setValue(email);
-                            stage.child("telno").setValue(phone);
-                            stage.child("ic").setValue(ic);
-                            stage.child("address").setValue(address);
-                            stage.child("program").setValue(program);
-                            stage.child("session").setValue(session);
-
-                            // Send email to the student //
-                            String stringSenderEmail = "postmaster@sandbox9a189234a5e64ef0a823c2cf47daaeba.mailgun.org";
-                            String stringReceiverEmail = email;
-                            String stringPasswordSenderEmail = "87d79c294275468fec083d7839d383d4-1b237f8b-d24d52dc";
-
-                            String stringHost = "smtp.mailgun.org";
-
-                            Properties properties = System.getProperties();
-
-                            properties.put("mail.smtp.host", stringHost);
-                            properties.put("mail.smtp.port", "587");
-                            properties.put("mail.smtp.tls.enable", "true");
-                            properties.put("mail.smtp.auth", "true");
-                            properties.put("mail.smtp.from", "donotreply@canorus.epizy.com");
-
-                            javax.mail.Session session1 = Session.getInstance(properties, new Authenticator()
-                            {
-                                @Override
-                                protected PasswordAuthentication getPasswordAuthentication()
-                                {
-                                    return new PasswordAuthentication(stringSenderEmail, stringPasswordSenderEmail);
-                                }
-                            });
-
-                            MimeMessage mimeMessage = new MimeMessage(session1);
-                            try
-                            {
-                                mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(stringReceiverEmail));
-
-                                mimeMessage.setSubject("Student Registration Successful");
-                                mimeMessage.setText("This Is To Inform You That The You Have Been Successfully Registered On The Canorus Learning Management System.\n" +
-                                        "Student Login ID: " + stuId + "\n" +
-                                        "Student Login Password: " + password + "\n" +
-                                        "Student Name: " + name + "\n" +
-                                        "Student Program: " + program + "\n" +
-                                        "Student Session: " + session + "\n" +
-                                        "You May Access Your Student Account on https://canorus.epizy.com/login.php or the Canorus Android Mobile Application");
-
-                                Thread thread = new Thread(new Runnable()
-                                {
-                                    @Override
-                                    public void run()
-                                    {
-
-                                        try
-                                        {
-                                            Transport.send(mimeMessage);
-                                        }
-
-                                        catch (MessagingException e)
-                                        {
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-                                });
-
-                                thread.start();
-
-                            }
-
-                            catch (MessagingException e)
-                            {
-                                e.printStackTrace();
-                            }
-
-                            // Log the details //
-                            logAddStudent(spId, stuId, program, session);
-
-                            exit = "true";
-
-                            SystemClock.sleep(3000);
-
-                            finish();
-                            overridePendingTransition(0, 0);
-                            startActivity (new Intent(getApplicationContext(), AddStudent.class));
-                            overridePendingTransition(0, 0);
-
-                            Toast.makeText(AddStudent.this, "Student Added!", Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-                        else
-                        {
-
-                            if (exit.equalsIgnoreCase("true"))
-                            {
-
-
-
-                            }
-
-                            else
-                            {
-
-                                Toast.makeText(AddStudent.this, "Student ID Already Exists!", Toast.LENGTH_SHORT).show();
-
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error)
-                    {
-
-                    }
-
-                });
+                // Upload the file to storage //
+                Intent intent = new Intent();
+                intent.setType("application/pdf");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select PDF File"), FILE_CODE);
 
             }
 

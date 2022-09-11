@@ -1,23 +1,31 @@
 package com.example.canoruslearningmanagementsystem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,15 +33,30 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class EditStudent extends AppCompatActivity
 {
+
+    private static final int FILE_CODE = 69;
 
     FirebaseFirestore log = FirebaseFirestore.getInstance();
 
@@ -47,14 +70,101 @@ public class EditStudent extends AppCompatActivity
     private String spFileName = "com.example.session";
 
     String id = "";
+    String newfilename = "";
+    String finalId = "";
+
+    String password = "";
+    String name = "";
+    String email = "";
+    String phone = "";
+    String ic = "";
+    String address = "";
+    String program = "";
+    String session = "";
 
     EditText mPassword, mName, mEmail, mPhone, mIc, mAddress;
     Spinner mProgram, mSession;
     Button mSubmit;
+    CheckBox mCert;
     TextView mTitle;
 
     ArrayList<String> row1 = new ArrayList<>();
     ArrayList<String> row2 = new ArrayList<>();
+
+    StorageReference mStorageReference;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == FILE_CODE)
+        {
+
+            UploadTask uploadTask = mStorageReference.putFile(data.getData());
+
+            // Create file retrieval task //
+            Task<Uri> task = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+            {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                {
+
+                    if (!task.isSuccessful())
+                    {
+
+                        Toast.makeText(EditStudent.this, "Process Failed", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    return mStorageReference.getDownloadUrl();
+
+                }
+
+            }).addOnCompleteListener(new OnCompleteListener<Uri>()
+            {
+
+                @Override
+                public void onComplete(@NonNull Task<Uri> task)
+                {
+
+                    if (task.isSuccessful())
+                    {
+
+                        // Update the details in the database //
+                        FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+                        DatabaseReference stage2 = database2.getReference("Registration/" + id);
+
+                        stage2.child("password").setValue(password);
+                        stage2.child("name").setValue(name);
+                        stage2.child("email").setValue(email);
+                        stage2.child("telno").setValue(phone);
+                        stage2.child("ic").setValue(ic);
+                        stage2.child("address").setValue(address);
+                        stage2.child("program").setValue(program);
+                        stage2.child("session").setValue(session);
+                        stage2.child("filename").setValue(newfilename);
+
+                        // Log the audit changes to database //
+                        logEditStudent (finalId, id, program, session);
+
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent intent = new Intent(EditStudent.this, EditStudent.class);
+                        intent.putExtra("id", id);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+
+                    }
+
+                }
+
+            });
+
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,6 +180,7 @@ public class EditStudent extends AppCompatActivity
 
         String spId = mPreferences.getString(ID_KEY, "");
         String spSession = mPreferences.getString(SESSION_KEY, "");
+        finalId = spId;
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -89,6 +200,7 @@ public class EditStudent extends AppCompatActivity
         mSession = findViewById(R.id.editStudentSession);
         mSubmit = findViewById(R.id.editStudentSubmit);
         mTitle = findViewById(R.id.editStudentText11);
+        mCert = findViewById(R.id.editStudentCert);
 
        mTitle.setText("Edited: " + id);
 
@@ -181,14 +293,14 @@ public class EditStudent extends AppCompatActivity
                     public void onClick(View view)
                     {
 
-                        String password = mPassword.getText().toString().trim();
-                        String name = mName.getText().toString().trim();
-                        String email = mEmail.getText().toString().trim();
-                        String phone = mPhone.getText().toString().trim();
-                        String ic = mIc.getText().toString().trim();
-                        String address = mAddress.getText().toString().trim();
-                        String program = mProgram.getSelectedItem().toString().trim();
-                        String session = mSession.getSelectedItem().toString().trim();
+                        password = mPassword.getText().toString().trim();
+                        name = mName.getText().toString().trim();
+                        email = mEmail.getText().toString().trim();
+                        phone = mPhone.getText().toString().trim();
+                        ic = mIc.getText().toString().trim();
+                        address = mAddress.getText().toString().trim();
+                        program = mProgram.getSelectedItem().toString().trim();
+                        session = mSession.getSelectedItem().toString().trim();
 
                         if (TextUtils.isEmpty(password))
                         {
@@ -232,29 +344,48 @@ public class EditStudent extends AppCompatActivity
 
                         }
 
-                        // Update the details in the database //
-                        FirebaseDatabase database2 = FirebaseDatabase.getInstance();
-                        DatabaseReference stage2 = database2.getReference("Registration/" + id);
+                        if (mCert.isChecked())
+                        {
 
-                        stage2.child("password").setValue(password);
-                        stage2.child("name").setValue(name);
-                        stage2.child("email").setValue(email);
-                        stage2.child("telno").setValue(phone);
-                        stage2.child("ic").setValue(ic);
-                        stage2.child("address").setValue(address);
-                        stage2.child("program").setValue(program);
-                        stage2.child("session").setValue(session);
+                            // Create link to firebase storage for payment file //
+                            newfilename = "STUDENT_" + id + "_" + program + "_" + session + ".pdf";
+                            mStorageReference = FirebaseStorage.getInstance().getReference(newfilename);
 
-                        // Log the audit changes to database //
-                        logEditStudent (spId, id, program, session);
+                            // Upload the file to storage //
+                            Intent intent = new Intent();
+                            intent.setType("application/pdf");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent, "Select PDF File"), FILE_CODE);
 
-                        finish();
-                        overridePendingTransition(0, 0);
-                        Intent intent = new Intent(EditStudent.this, EditStudent.class);
-                        intent.putExtra("id", id);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
+                        }
 
+                        else
+                        {
+
+                            // Update the details in the database //
+                            FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+                            DatabaseReference stage2 = database2.getReference("Registration/" + id);
+
+                            stage2.child("password").setValue(password);
+                            stage2.child("name").setValue(name);
+                            stage2.child("email").setValue(email);
+                            stage2.child("telno").setValue(phone);
+                            stage2.child("ic").setValue(ic);
+                            stage2.child("address").setValue(address);
+                            stage2.child("program").setValue(program);
+                            stage2.child("session").setValue(session);
+
+                            // Log the audit changes to database //
+                            logEditStudent (finalId, id, program, session);
+
+                            finish();
+                            overridePendingTransition(0, 0);
+                            Intent intent = new Intent(EditStudent.this, EditStudent.class);
+                            intent.putExtra("id", id);
+                            startActivity(intent);
+                            overridePendingTransition(0, 0);
+
+                        }
 
                     }
 
