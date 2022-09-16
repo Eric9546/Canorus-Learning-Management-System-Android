@@ -57,7 +57,7 @@ public class StudentCheckout extends AppCompatActivity
     private SharedPreferences mPreferences;
     private String spFileName = "com.example.session";
 
-    Button mUpload, mCancel;
+    Button mUpload, mCancel, mOnline;
     ProgressBar mProgress;
 
     StorageReference mStorageReference;
@@ -125,6 +125,7 @@ public class StudentCheckout extends AppCompatActivity
                                 stage2.child("session").setValue(stuSession);
                                 stage2.child("filename").setValue(newfilename);
                                 stage2.child("payStatus").setValue(payStatus);
+                                stage2.child("payMode").setValue("Bank In");
 
                                 // Log the payment details //
                                 logPayment (stuId, program, stuSession, newfilename);
@@ -174,6 +175,7 @@ public class StudentCheckout extends AppCompatActivity
 
         mUpload = findViewById(R.id.studentCheckoutUpload);
         mCancel = findViewById(R.id.studentCheckoutCancel);
+        mOnline = findViewById(R.id.studentCheckoutOnline);
         mProgress = findViewById(R.id.studentCheckoutProgress);
 
         mUpload.setOnClickListener(new View.OnClickListener()
@@ -195,6 +197,20 @@ public class StudentCheckout extends AppCompatActivity
                 intent.setType("application/pdf");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select PDF File"), FILE_CODE);
+
+            }
+
+        });
+
+        mOnline.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+
+                startActivity (new Intent(getApplicationContext(), StudentOnlinePayment.class));
+                finish();
 
             }
 

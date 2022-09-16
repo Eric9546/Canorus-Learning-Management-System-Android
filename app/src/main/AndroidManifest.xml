@@ -15,10 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".StudentOnlinePayment"
+            android:exported="false" />
+        <activity
             android:name=".EditClass"
             android:exported="false"
             android:label="View Classes"
-            android:parentActivityName=".ViewClassesFiltered"/>
+            android:parentActivityName=".ViewClassesFiltered" />
         <activity
             android:name=".ViewClassesFiltered"
             android:exported="false"

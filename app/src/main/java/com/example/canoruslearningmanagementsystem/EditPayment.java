@@ -122,7 +122,7 @@ public class EditPayment extends AppCompatActivity implements TwoRowAdapter.Item
                         {
 
                             row1.add(item.child("id").getValue().toString() + " - " + item.child("name").getValue().toString());
-                            row2.add(item.child("payStatus").getValue().toString());
+                            row2.add(item.child("payStatus").getValue().toString() + " - " + item.child("payMode").getValue().toString());
                             row3.add(item.child("id").getValue().toString());
                             row4.add(item.child("filename").getValue().toString());
 
