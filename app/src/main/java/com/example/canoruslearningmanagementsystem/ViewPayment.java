@@ -34,7 +34,7 @@ public class ViewPayment extends AppCompatActivity
     private String spFileName = "com.example.session";
 
     Spinner mProgram, mSession;
-    Button mSubmit;
+    Button mSubmit, mManual;
 
     ArrayList<String> row1 = new ArrayList<>();
     ArrayList<String> row2 = new ArrayList<>();
@@ -57,6 +57,7 @@ public class ViewPayment extends AppCompatActivity
         mProgram = findViewById(R.id.viewPaymentProgram);
         mSession = findViewById(R.id.viewPaymentSession);
         mSubmit = findViewById(R.id.viewPaymentSubmit);
+        mManual = findViewById(R.id.viewPaymentManual);
 
         // Set up the drop down menu //
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -130,6 +131,23 @@ public class ViewPayment extends AppCompatActivity
             {
 
                 Intent intent = new Intent(ViewPayment.this, EditPayment.class);
+                intent.putExtra("program", mProgram.getSelectedItem().toString());
+                intent.putExtra("session", mSession.getSelectedItem().toString());
+                intent.putExtra("search", "");
+                startActivity(intent);
+
+            }
+
+        });
+
+        mManual.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+
+                Intent intent = new Intent(ViewPayment.this, ViewPaymentManualFiltered.class);
                 intent.putExtra("program", mProgram.getSelectedItem().toString());
                 intent.putExtra("session", mSession.getSelectedItem().toString());
                 intent.putExtra("search", "");

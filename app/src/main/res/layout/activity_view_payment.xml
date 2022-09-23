@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="View Payments"
         android:ems="13"
+        android:text="View Payments"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPaymentProgram" />
@@ -63,5 +63,17 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPaymentText2" />
+
+    <Button
+        android:id="@+id/viewPaymentManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="13"
+        android:text="Add Manual Payment"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPaymentSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

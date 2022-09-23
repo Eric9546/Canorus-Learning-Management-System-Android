@@ -15,8 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CanorusManagementSystem">
         <activity
+            android:name=".ViewPaymentManualFiltered"
+            android:exported="false"
+            android:label="Add Manual Payment"
+            android:parentActivityName=".ViewPayment"/>
+        <activity
             android:name=".StudentOnlinePayment"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Online Payment"
+            android:parentActivityName=".StudentCheckout"/>
         <activity
             android:name=".EditClass"
             android:exported="false"
